@@ -1,0 +1,61 @@
+# The Dungeon Economy
+
+A weekly intelligence brief on D&D, publishing, platforms, and market signals.
+
+Live at: **https://momentum616.github.io/thedungeoneconomy/**
+
+---
+
+## How it works
+
+Issues are generated in Claude.ai using a two-step workflow, then published here by dropping a single HTML file into `/reports`. GitHub Actions handles the rest — rebuilding the archive index and injecting prev/next navigation automatically.
+
+```
+Claude.ai (research)   →   Claude.ai (HTML render)   →   Drop into /reports   →   Live in 60 seconds
+```
+
+---
+
+## Weekly workflow
+
+1. Open your Claude.ai Project **The Dungeon Economy**
+2. Start a new chat → `Run Mode 1. Issue #N, week of [date].`
+3. Copy the markdown report
+4. Start a second chat → `Run Mode 2. Issue #N, [date]. [paste report]`
+5. Save the returned HTML as `YYYY-MM-DD.html`
+6. Upload to the `reports/` folder in this repo
+7. Done — the Action publishes it within 60 seconds
+
+---
+
+## File structure
+
+```
+thedungeoneconomy/
+├── .github/
+│   └── workflows/
+│       └── publish.yml       ← triggers on new /reports files
+├── reports/
+│   └── YYYY-MM-DD.html       ← drop weekly issues here
+├── scripts/
+│   └── build_index.py        ← rebuilds index + injects nav
+├── index.html                ← archive homepage (auto-rebuilt)
+└── .gitignore
+```
+
+---
+
+## File naming
+
+Reports must be named `YYYY-MM-DD.html` using the Friday publication date.
+
+| Date          | Filename          |
+|---------------|-------------------|
+| April 11 2026 | `2026-04-11.html` |
+| April 18 2026 | `2026-04-18.html` |
+
+---
+
+## Cost
+
+Everything is free. GitHub repo, GitHub Pages, and GitHub Actions are all on the free tier. Report generation uses an existing Claude.ai Pro subscription.
